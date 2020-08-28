@@ -41,6 +41,11 @@ class Algolia_Http_Client_Interface_Factory {
 			return $http_client;
 		}
 
+		/*
+		 * Algolia PHP Client uses either a Php53HttpClient Client,
+		 * or a Guzzle6HttpClient Client,
+		 * and prefers Guzzle when available.
+		 */
 		if ( class_exists( '\GuzzleHttp\Client' ) && 6 <= self::get_guzzle_version() ) {
 			$http_client = self::create_guzzle_6_http_client();
 		} else {
@@ -84,12 +89,14 @@ class Algolia_Http_Client_Interface_Factory {
 	protected static function create_guzzle_6_http_client(): Guzzle6HttpClient {
 
 		/**
-		 * Allow developers to override the Guzzle6HttpClient options.
+		 * Allow developers to override the GuzzleHttp\Client options.
+		 *
+		 * @link http://docs.guzzlephp.org/en/stable/request-options.html
 		 *
 		 * @author Richard Aber <richard.aber@webdevstudios.com>
 		 * @since 1.4.1-dev
 		 *
-		 * @param array $options Options for Guzzle6HttpClient construction.
+		 * @param array $options Options for GuzzleHttp Client construction.
 		 */
 		$options = apply_filters(
 			'algolia_guzzle_6_http_client_options',
@@ -98,7 +105,16 @@ class Algolia_Http_Client_Interface_Factory {
 			]
 		);
 
-		return new Guzzle6HttpClient( $options );
+		/**
+		 * The Guzzle Client to use for the HttpClientInterface.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @var \GuzzleHttp\Client $guzzle_client
+		 */
+		$guzzle_client = new \GuzzleHttp\Client( $options );
+
+		return new Guzzle6HttpClient( $guzzle_client );
 	}
 
 	/**
@@ -112,12 +128,14 @@ class Algolia_Http_Client_Interface_Factory {
 	protected static function create_php53_http_client(): Php53HttpClient {
 
 		/**
-		 * Allow developers to override the Php53HttpClient options.
+		 * Allow developers to override the Php53HttpClient cURL options.
+		 *
+		 * @link https://curl.haxx.se/libcurl/c/curl_easy_setopt.html
 		 *
 		 * @author Richard Aber <richard.aber@webdevstudios.com>
 		 * @since 1.4.1-dev
 		 *
-		 * @param array $options Options for Php53HttpClient construction.
+		 * @param array $options Curl options for Php53HttpClient construction.
 		 */
 		$options = apply_filters(
 			'algolia_php53_http_client_options',
