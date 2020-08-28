@@ -352,58 +352,8 @@ class Algolia_Admin_Page_Settings {
 			add_settings_error(
 				$this->option_group,
 				'empty',
-				esc_html__( 'API key should not be empty', 'wp-search-with-algolia' )
+				esc_html__( 'API key should not be empty.', 'wp-search-with-algolia' )
 			);
-		}
-		$errors = get_settings_errors( $this->option_group );
-		if ( ! empty( $errors ) ) {
-			return $value;
-		}
-
-		$settings = $this->plugin->get_settings();
-
-		$valid_credentials = true;
-		try {
-			Algolia_API::assert_valid_credentials( $settings->get_application_id(), $value );
-		} catch ( Exception $exception ) {
-			$valid_credentials = false;
-			add_settings_error(
-				$this->option_group,
-				'login_exception',
-				$exception->getMessage()
-			);
-		}
-
-		if ( ! $valid_credentials ) {
-			add_settings_error(
-				$this->option_group,
-				'no_connection',
-				esc_html__(
-					'We were unable to authenticate you against the Algolia servers with the provided information. Please ensure that you used an the Admin API key and a valid Application ID.',
-					'wp-search-with-algolia'
-				)
-			);
-			$settings->set_api_is_reachable( false );
-		} else {
-			if ( ! Algolia_API::is_valid_search_api_key( $settings->get_application_id(), $settings->get_search_api_key() ) ) {
-				add_settings_error(
-					$this->option_group,
-					'wrong_search_API_key',
-					esc_html__(
-						'It looks like your search API key is wrong. Ensure that the key you entered has only the search capability and nothing else. Also ensure that the key has no limited time validity.',
-						'wp-search-with-algolia'
-					)
-				);
-				$settings->set_api_is_reachable( false );
-			} else {
-				add_settings_error(
-					$this->option_group,
-					'connection_success',
-					esc_html__( 'We succesfully managed to connect to the Algolia servers with the provided information. Your search API key has also been checked and is OK.', 'wp-search-with-algolia' ),
-					'updated'
-				);
-				$settings->set_api_is_reachable( true );
-			}
 		}
 
 		return $value;
@@ -450,9 +400,7 @@ class Algolia_Admin_Page_Settings {
 			esc_html__( 'Indices prefix can only contain alphanumeric characters and underscores.', 'wp-search-with-algolia' )
 		);
 
-		$value = get_option( 'algolia_index_name_prefix' );
-
-		return $this->is_valid_index_name_prefix( $value ) ? $value : 'wp_';
+		return $value;
 	}
 
 	/**
