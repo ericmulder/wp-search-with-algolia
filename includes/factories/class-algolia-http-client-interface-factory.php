@@ -94,7 +94,7 @@ class Algolia_Http_Client_Interface_Factory {
 		$options = apply_filters(
 			'algolia_guzzle_6_http_client_options',
 			[
-				'CURLOPT_CAINFO' => ALGOLIA_PATH . 'resources/ca-bundle.crt',
+				'verify' => ALGOLIA_PATH . 'resources/curl-ca-bundle.pem',
 			]
 		);
 
@@ -122,7 +122,7 @@ class Algolia_Http_Client_Interface_Factory {
 		$options = apply_filters(
 			'algolia_php53_http_client_options',
 			[
-				'CURLOPT_CAINFO' => ALGOLIA_PATH . 'resources/ca-bundle.crt',
+				'CURLOPT_CAINFO' => ALGOLIA_PATH . 'resources/curl-ca-bundle.pem',
 			]
 		);
 
