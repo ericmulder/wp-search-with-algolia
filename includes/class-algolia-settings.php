@@ -21,18 +21,7 @@ class Algolia_Settings {
 	 * @author  WebDevStudios <contact@webdevstudios.com>
 	 * @since   1.0.0
 	 */
-	public function __construct() {
-		add_option( 'algolia_application_id', '' );
-		add_option( 'algolia_search_api_key', '' );
-		add_option( 'algolia_api_key', '' );
-		add_option( 'algolia_synced_indices_ids', array() );
-		add_option( 'algolia_autocomplete_enabled', 'no' );
-		add_option( 'algolia_autocomplete_config', array() );
-		add_option( 'algolia_override_native_search', 'native' );
-		add_option( 'algolia_index_name_prefix', 'wp_' );
-		add_option( 'algolia_api_is_reachable', 'no' );
-		add_option( 'algolia_powered_by_enabled', 'yes' );
-	}
+	public function __construct() {}
 
 	/**
 	 * Get the Algolia Application ID.
