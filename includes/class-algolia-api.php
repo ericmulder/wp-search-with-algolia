@@ -122,7 +122,8 @@ class Algolia_API {
 	 * @throws Exception If the Algolia Admin API Key does not have correct ACLs.
 	 */
 	public static function assert_valid_credentials( $application_id, $api_key ) {
-		$client = Algolia_Search_Client_Factory::create();
+		// Do not use client factory here. Test the incoming values directly.
+		$client = SearchClient::create( (string) $application_id, (string) $api_key );
 
 		// This checks if the API Key is an Admin API key.
 		// Admin API keys have no scopes so we need a separate check here.
@@ -191,7 +192,8 @@ class Algolia_API {
 	 * @return bool
 	 */
 	public static function is_valid_search_api_key( $application_id, $search_api_key ) {
-		$client = Algolia_Search_Client_Factory::create();
+		// Do not use client factory here. Test the incoming values directly.
+		$client = SearchClient::create( (string) $application_id, (string) $search_api_key );
 
 		try {
 			// If this call does not succeed, then the application_ID or API_key is/are wrong.
