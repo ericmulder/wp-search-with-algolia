@@ -126,6 +126,7 @@ class Algolia_Admin_Page_Autocomplete {
 	 * @since  1.0.0
 	 */
 	public function add_settings() {
+
 		add_settings_section(
 			$this->section,
 			null,
@@ -133,24 +134,8 @@ class Algolia_Admin_Page_Autocomplete {
 			$this->slug
 		);
 
-		add_settings_field(
-			'algolia_autocomplete_enabled',
-			esc_html__( 'Enable autocomplete', 'wp-search-with-algolia' ),
-			array( $this, 'autocomplete_enabled_callback' ),
-			$this->slug,
-			$this->section
-		);
-
-		add_settings_field(
-			'algolia_autocomplete_config',
-			esc_html__( 'Configuration', 'wp-search-with-algolia' ),
-			array( $this, 'autocomplete_config_callback' ),
-			$this->slug,
-			$this->section
-		);
-
-		register_setting( $this->option_group, 'algolia_autocomplete_enabled', array( $this, 'sanitize_autocomplete_enabled' ) );
-		register_setting( $this->option_group, 'algolia_autocomplete_config', array( $this, 'sanitize_autocomplete_config' ) );
+		$this->register_settings();
+		$this->add_settings_fields();
 	}
 
 	/**
@@ -263,5 +248,59 @@ class Algolia_Admin_Page_Autocomplete {
 	 */
 	public function print_section_settings() {
 		echo '<p>' . esc_html__( 'The autocomplete feature adds a find-as-you-type dropdown menu to your search bar(s).', 'wp-search-with-algolia' ) . '</p>';
+	}
+
+	/**
+	 * Add settings fields.
+	 *
+	 * @author WebDevStudios <contact@webdevstudios.com>
+	 * @since  1.5.0-dev
+	 */
+	protected function add_settings_fields(): void {
+
+		add_settings_field(
+			'algolia_autocomplete_enabled',
+			esc_html__( 'Enable autocomplete', 'wp-search-with-algolia' ),
+			array( $this, 'autocomplete_enabled_callback' ),
+			$this->slug,
+			$this->section
+		);
+
+		add_settings_field(
+			'algolia_autocomplete_config',
+			esc_html__( 'Configuration', 'wp-search-with-algolia' ),
+			array( $this, 'autocomplete_config_callback' ),
+			$this->slug,
+			$this->section
+		);
+	}
+
+	/**
+	 * Register settings.
+	 *
+	 * @author WebDevStudios <contact@webdevstudios.com>
+	 * @since  1.5.0-dev
+	 */
+	protected function register_settings(): void {
+
+		register_setting(
+			$this->option_group,
+			'algolia_autocomplete_enabled',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_autocomplete_enabled' ],
+				'default'           => 'no',
+			]
+		);
+
+		register_setting(
+			$this->option_group,
+			'algolia_autocomplete_config',
+			[
+				'type'              => 'array',
+				'sanitize_callback' => [ $this, 'sanitize_autocomplete_config' ],
+				'default'           => [],
+			]
+		);
 	}
 }

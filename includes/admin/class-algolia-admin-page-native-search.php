@@ -105,6 +105,7 @@ class Algolia_Admin_Page_Native_Search {
 	 * @since  1.0.0
 	 */
 	public function add_settings() {
+
 		add_settings_section(
 			$this->section,
 			null,
@@ -112,15 +113,8 @@ class Algolia_Admin_Page_Native_Search {
 			$this->slug
 		);
 
-		add_settings_field(
-			'algolia_override_native_search',
-			esc_html__( 'Search results', 'wp-search-with-algolia' ),
-			array( $this, 'override_native_search_callback' ),
-			$this->slug,
-			$this->section
-		);
-
-		register_setting( $this->option_group, 'algolia_override_native_search', array( $this, 'sanitize_override_native_search' ) );
+		$this->register_settings();
+		$this->add_settings_fields();
 	}
 
 	/**
@@ -239,5 +233,41 @@ class Algolia_Admin_Page_Native_Search {
 					esc_html( __( 'You have no index containing only posts yet. Please index some content on the `Indexing` page.', 'wp-search-with-algolia' ) ) .
 					'</div>';
 		}
+	}
+
+	/**
+	 * Add settings fields.
+	 *
+	 * @author WebDevStudios <contact@webdevstudios.com>
+	 * @since  1.5.0-dev
+	 */
+	protected function add_settings_fields(): void {
+
+		add_settings_field(
+			'algolia_override_native_search',
+			esc_html__( 'Search results', 'wp-search-with-algolia' ),
+			array( $this, 'override_native_search_callback' ),
+			$this->slug,
+			$this->section
+		);
+	}
+
+	/**
+	 * Register settings.
+	 *
+	 * @author WebDevStudios <contact@webdevstudios.com>
+	 * @since  1.5.0-dev
+	 */
+	protected function register_settings(): void {
+
+		register_setting(
+			$this->option_group,
+			'algolia_override_native_search',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_override_native_search' ],
+				'default'           => 'native',
+			]
+		);
 	}
 }
