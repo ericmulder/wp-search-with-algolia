@@ -141,6 +141,7 @@ class Algolia_Admin_Page_Settings {
 	 * @since  1.0.0
 	 */
 	public function add_settings() {
+
 		add_settings_section(
 			$this->section,
 			null,
@@ -148,13 +149,8 @@ class Algolia_Admin_Page_Settings {
 			$this->slug
 		);
 
+		$this->register_settings();
 		$this->add_settings_fields();
-
-		register_setting( $this->option_group, 'algolia_application_id', array( $this, 'sanitize_application_id' ) );
-		register_setting( $this->option_group, 'algolia_search_api_key', array( $this, 'sanitize_search_api_key' ) );
-		register_setting( $this->option_group, 'algolia_api_key', array( $this, 'sanitize_api_key' ) );
-		register_setting( $this->option_group, 'algolia_index_name_prefix', array( $this, 'sanitize_index_name_prefix' ) );
-		register_setting( $this->option_group, 'algolia_powered_by_enabled', array( $this, 'sanitize_powered_by_enabled' ) );
 	}
 
 	/**
@@ -509,5 +505,19 @@ class Algolia_Admin_Page_Settings {
 			$this->slug,
 			$this->section
 		);
+	}
+
+	/**
+	 * Register settings.
+	 *
+	 * @author WebDevStudios <contact@webdevstudios.com>
+	 * @since  1.4.1-dev
+	 */
+	protected function register_settings(): void {
+		register_setting( $this->option_group, 'algolia_application_id', array( $this, 'sanitize_application_id' ) );
+		register_setting( $this->option_group, 'algolia_search_api_key', array( $this, 'sanitize_search_api_key' ) );
+		register_setting( $this->option_group, 'algolia_api_key', array( $this, 'sanitize_api_key' ) );
+		register_setting( $this->option_group, 'algolia_index_name_prefix', array( $this, 'sanitize_index_name_prefix' ) );
+		register_setting( $this->option_group, 'algolia_powered_by_enabled', array( $this, 'sanitize_powered_by_enabled' ) );
 	}
 }
