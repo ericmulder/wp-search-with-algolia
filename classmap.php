@@ -42,6 +42,9 @@ require_once ALGOLIA_PATH . 'includes/factories/class-algolia-http-client-interf
 require_once ALGOLIA_PATH . 'includes/factories/class-algolia-search-client-factory.php';
 require_once ALGOLIA_PATH . 'includes/factories/class-algolia-settings-factory.php';
 
+require_once ALGOLIA_PATH . 'includes/utilities/class-algolia-settings-utilities.php';
+require_once ALGOLIA_PATH . 'includes/utilities/class-algolia-search-client-utilities.php';
+
 if ( is_admin() ) {
 	require_once ALGOLIA_PATH . 'includes/admin/class-algolia-admin.php';
 	require_once ALGOLIA_PATH . 'includes/admin/class-algolia-admin-page-autocomplete.php';
