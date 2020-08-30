@@ -514,10 +514,55 @@ class Algolia_Admin_Page_Settings {
 	 * @since  1.4.1-dev
 	 */
 	protected function register_settings(): void {
-		register_setting( $this->option_group, 'algolia_application_id', array( $this, 'sanitize_application_id' ) );
-		register_setting( $this->option_group, 'algolia_search_api_key', array( $this, 'sanitize_search_api_key' ) );
-		register_setting( $this->option_group, 'algolia_api_key', array( $this, 'sanitize_api_key' ) );
-		register_setting( $this->option_group, 'algolia_index_name_prefix', array( $this, 'sanitize_index_name_prefix' ) );
-		register_setting( $this->option_group, 'algolia_powered_by_enabled', array( $this, 'sanitize_powered_by_enabled' ) );
+
+		register_setting(
+			$this->option_group,
+			'algolia_application_id',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_application_id' ],
+				'default'           => ( defined( 'ALGOLIA_APPLICATION_ID' ) ) ? ALGOLIA_APPLICATION_ID : '',
+			]
+		);
+
+		register_setting(
+			$this->option_group,
+			'algolia_search_api_key',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_search_api_key' ],
+				'default'           => ( defined( 'ALGOLIA_SEARCH_API_KEY' ) ) ? ALGOLIA_SEARCH_API_KEY : '',
+			]
+		);
+
+		register_setting(
+			$this->option_group,
+			'algolia_api_key',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_api_key' ],
+				'default'           => ( defined( 'ALGOLIA_API_KEY' ) ) ? ALGOLIA_API_KEY : '',
+			]
+		);
+
+		register_setting(
+			$this->option_group,
+			'algolia_index_name_prefix',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_index_name_prefix' ],
+				'default'           => ( defined( 'ALGOLIA_INDEX_NAME_PREFIX' ) ) ? ALGOLIA_INDEX_NAME_PREFIX : 'wp_',
+			]
+		);
+
+		register_setting(
+			$this->option_group,
+			'algolia_powered_by_enabled',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_powered_by_enabled' ],
+				'default'           => 'yes',
+			]
+		);
 	}
 }
