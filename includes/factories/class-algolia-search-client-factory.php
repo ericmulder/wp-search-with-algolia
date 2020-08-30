@@ -2,7 +2,7 @@
 /**
  * Algolia_Php53_Http_Client_Factory class file.
  *
- * @since   1.4.1-dev
+ * @since   1.5.0-dev
  * @package WebDevStudios\WPSWA
  */
 
@@ -14,7 +14,7 @@ use Algolia\AlgoliaSearch\SearchClient;
  *
  * Responsible for creating a shared instance of the SearchClient object.
  *
- * @since 1.4.1-dev
+ * @since 1.5.0-dev
  */
 class Algolia_Search_Client_Factory {
 
@@ -22,7 +22,7 @@ class Algolia_Search_Client_Factory {
 	 * Create and return an instance of the SearchClient.
 	 *
 	 * @author Richard Aber <richard.aber@webdevstudios.com>
-	 * @since  1.4.1-dev
+	 * @since  1.5.0-dev
 	 *
 	 * @return SearchClient
 	 */
@@ -31,7 +31,7 @@ class Algolia_Search_Client_Factory {
 		/**
 		 * The static instance to share, else null.
 		 *
-		 * @since 1.4.1-dev
+		 * @since 1.5.0-dev
 		 *
 		 * @var null|SearchClient $search_client
 		 */

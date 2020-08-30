@@ -2,7 +2,7 @@
 /**
  * Algolia_Http_Client_Interface_Factory class file.
  *
- * @since   1.4.1-dev
+ * @since   1.5.0-dev
  * @package WebDevStudios\WPSWA
  */
 
@@ -15,7 +15,7 @@ use Algolia\AlgoliaSearch\Http\Php53HttpClient;
  *
  * Responsible for creating a shared instance of the HttpClientInterface object.
  *
- * @since 1.4.1-dev
+ * @since 1.5.0-dev
  */
 class Algolia_Http_Client_Interface_Factory {
 
@@ -23,7 +23,7 @@ class Algolia_Http_Client_Interface_Factory {
 	 * Create and return an instance of the HttpClientInterface.
 	 *
 	 * @author Richard Aber <richard.aber@webdevstudios.com>
-	 * @since  1.4.1-dev
+	 * @since  1.5.0-dev
 	 *
 	 * @return HttpClientInterface The shared HttpClientInterface instance.
 	 */
@@ -31,7 +31,7 @@ class Algolia_Http_Client_Interface_Factory {
 		/**
 		 * The static instance to share, else null.
 		 *
-		 * @since 1.4.1-dev
+		 * @since 1.5.0-dev
 		 *
 		 * @var null|HttpClientInterface $http_client
 		 */
@@ -59,7 +59,7 @@ class Algolia_Http_Client_Interface_Factory {
 	 * Get the Guzzle version.
 	 *
 	 * @author Richard Aber <richard.aber@webdevstudios.com>
-	 * @since  1.4.1-dev
+	 * @since  1.5.0-dev
 	 *
 	 * @return int|null
 	 */
@@ -82,7 +82,7 @@ class Algolia_Http_Client_Interface_Factory {
 	 * Create a Guzzle6HttpClient client.
 	 *
 	 * @author Richard Aber <richard.aber@webdevstudios.com>
-	 * @since  1.4.1-dev
+	 * @since  1.5.0-dev
 	 *
 	 * @return Guzzle6HttpClient
 	 */
@@ -94,7 +94,7 @@ class Algolia_Http_Client_Interface_Factory {
 		 * @link http://docs.guzzlephp.org/en/stable/request-options.html
 		 *
 		 * @author Richard Aber <richard.aber@webdevstudios.com>
-		 * @since 1.4.1-dev
+		 * @since 1.5.0-dev
 		 *
 		 * @param array $options Options for GuzzleHttp Client construction.
 		 */
@@ -121,7 +121,7 @@ class Algolia_Http_Client_Interface_Factory {
 	 * Create a Php53HttpClient client.
 	 *
 	 * @author Richard Aber <richard.aber@webdevstudios.com>
-	 * @since  1.4.1-dev
+	 * @since  1.5.0-dev
 	 *
 	 * @return Php53HttpClient
 	 */
@@ -133,7 +133,7 @@ class Algolia_Http_Client_Interface_Factory {
 		 * @link https://curl.haxx.se/libcurl/c/curl_easy_setopt.html
 		 *
 		 * @author Richard Aber <richard.aber@webdevstudios.com>
-		 * @since 1.4.1-dev
+		 * @since 1.5.0-dev
 		 *
 		 * @param array $options Curl options for Php53HttpClient construction.
 		 */

@@ -476,7 +476,7 @@ class Algolia_Admin_Page_Settings {
 	 * Add settings fields.
 	 *
 	 * @author WebDevStudios <contact@webdevstudios.com>
-	 * @since  1.4.1-dev
+	 * @since  1.5.0-dev
 	 */
 	protected function add_settings_fields(): void {
 
@@ -525,7 +525,7 @@ class Algolia_Admin_Page_Settings {
 	 * Register settings.
 	 *
 	 * @author WebDevStudios <contact@webdevstudios.com>
-	 * @since  1.4.1-dev
+	 * @since  1.5.0-dev
 	 */
 	protected function register_settings(): void {
 

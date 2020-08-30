@@ -2,7 +2,7 @@
 /**
  * Algolia_Settings_Utilities class file.
  *
- * @since   1.4.1-dev
+ * @since   1.5.0-dev
  * @package WebDevStudios\WPSWA
  */
 
@@ -11,7 +11,7 @@
  *
  * Static utilities for working with Settings.
  *
- * @since 1.4.1-dev
+ * @since 1.5.0-dev
  */
 class Algolia_Settings_Utilities {
 
@@ -22,7 +22,7 @@ class Algolia_Settings_Utilities {
 	 * only that the ID is not empty.
 	 *
 	 * @author WebDevStudios <contact@webdevstudios.com>
-	 * @since 1.4.1-dev
+	 * @since 1.5.0-dev
 	 *
 	 * @return bool
 	 */
@@ -38,7 +38,7 @@ class Algolia_Settings_Utilities {
 	 * only that the Admin API Key is not empty.
 	 *
 	 * @author WebDevStudios <contact@webdevstudios.com>
-	 * @since 1.4.1-dev
+	 * @since 1.5.0-dev
 	 *
 	 * @return bool
 	 */
@@ -54,7 +54,7 @@ class Algolia_Settings_Utilities {
 	 * only that the Search-Only API Key is not empty.
 	 *
 	 * @author WebDevStudios <contact@webdevstudios.com>
-	 * @since 1.4.1-dev
+	 * @since 1.5.0-dev
 	 *
 	 * @return bool
 	 */
@@ -70,7 +70,7 @@ class Algolia_Settings_Utilities {
 	 * only that they are not empty.
 	 *
 	 * @author WebDevStudios <contact@webdevstudios.com>
-	 * @since  1.4.1-dev
+	 * @since  1.5.0-dev
 	 *
 	 * @return bool
 	 */

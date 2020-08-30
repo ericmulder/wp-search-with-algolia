@@ -3,7 +3,7 @@
  * Admin Page Settings Section template partial.
  *
  * @author  WebDevStudios <contact@webdevstudios.com>
- * @since   1.4.1-dev
+ * @since   1.5.0-dev
  *
  * @package WebDevStudios\WPSWA
  */

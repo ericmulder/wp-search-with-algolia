@@ -2,7 +2,7 @@
 /**
  * Algolia_Client_Utilities class file.
  *
- * @since   1.4.1-dev
+ * @since   1.5.0-dev
  * @package WebDevStudios\WPSWA
  */
 
@@ -11,7 +11,7 @@
  *
  * Static utilities for working with the Algolia Client.
  *
- * @since 1.4.1-dev
+ * @since 1.5.0-dev
  */
 class Algolia_Search_Client_Utilities {
 
@@ -21,7 +21,7 @@ class Algolia_Search_Client_Utilities {
 	 * This does not determine if there are server configuration or network issues.
 	 *
 	 * @author WebDevStudios <contact@webdevstudios.com>
-	 * @since  1.4.1-dev
+	 * @since  1.5.0-dev
 	 *
 	 * @return bool
 	 */
