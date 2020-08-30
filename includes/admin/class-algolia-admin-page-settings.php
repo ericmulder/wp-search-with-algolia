@@ -310,7 +310,7 @@ class Algolia_Admin_Page_Settings {
 			add_settings_error(
 				$this->option_group,
 				'empty',
-				esc_html__( 'API key should not be empty.', 'wp-search-with-algolia' )
+				esc_html__( 'Admin API key should not be empty.', 'wp-search-with-algolia' )
 			);
 		}
 		$errors = get_settings_errors( $this->option_group );
@@ -337,7 +337,7 @@ class Algolia_Admin_Page_Settings {
 				$this->option_group,
 				'no_connection',
 				esc_html__(
-					'We were unable to authenticate you against the Algolia servers with the provided information. Please ensure that you used an the Admin API key and a valid Application ID.',
+					'We were unable to authenticate you against the Algolia servers with the provided information. Please ensure that you used a valid Admin API key and Application ID.',
 					'wp-search-with-algolia'
 				)
 			);
