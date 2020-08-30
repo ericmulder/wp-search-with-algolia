@@ -160,14 +160,17 @@ class Algolia_Admin_Page_Settings {
 	 * @since  1.0.0
 	 */
 	public function application_id_callback() {
-
-		$settings      = $this->plugin->get_settings();
-		$setting       = $settings->get_application_id();
-		$disabled_html = $settings->is_application_id_in_config() ? ' disabled' : '';
-?>
-		<input type="text" name="algolia_application_id" class="regular-text" value="<?php echo esc_attr( $setting ); ?>" <?php echo esc_html( $disabled_html ); ?>/>
-		<p class="description" id="home-description"><?php esc_html_e( 'Your Algolia Application ID.', 'wp-search-with-algolia' ); ?></p>
-<?php
+		$settings = Algolia_Settings_Factory::create();
+		?>
+		<input name="algolia_application_id"
+				class="regular-text"
+				type="text"
+				value="<?php echo esc_attr( $settings->get_application_id() ); ?>"
+				<?php disabled( $settings->is_application_id_in_config() ); ?> />
+		<p class="description" id="home-description">
+			<?php esc_html_e( 'Your Algolia Application ID.', 'wp-search-with-algolia' ); ?>
+		</p>
+		<?php
 	}
 
 	/**
@@ -177,14 +180,17 @@ class Algolia_Admin_Page_Settings {
 	 * @since  1.0.0
 	 */
 	public function search_api_key_callback() {
-		$settings      = $this->plugin->get_settings();
-		$setting       = $settings->get_search_api_key();
-		$disabled_html = $settings->is_search_api_key_in_config() ? ' disabled' : '';
-
-?>
-		<input type="text" name="algolia_search_api_key" class="regular-text" value="<?php echo esc_attr( $setting ); ?>" <?php echo esc_html( $disabled_html ); ?>/>
-		<p class="description" id="home-description"><?php esc_html_e( 'Your Algolia Search-only API key (public).', 'wp-search-with-algolia' ); ?></p>
-<?php
+		$settings = Algolia_Settings_Factory::create();
+		?>
+		<input name="algolia_search_api_key"
+				class="regular-text"
+				type="text"
+				value="<?php echo esc_attr( $settings->get_search_api_key() ); ?>"
+				<?php disabled( $settings->is_search_api_key_in_config() ); ?> />
+		<p class="description" id="home-description">
+			<?php esc_html_e( 'Your Algolia Search-only API key (public).', 'wp-search-with-algolia' ); ?>
+		</p>
+		<?php
 	}
 
 	/**
@@ -194,13 +200,17 @@ class Algolia_Admin_Page_Settings {
 	 * @since  1.0.0
 	 */
 	public function api_key_callback() {
-		$settings      = $this->plugin->get_settings();
-		$setting       = $settings->get_api_key();
-		$disabled_html = $settings->is_api_key_in_config() ? ' disabled' : '';
-?>
-		<input type="password" name="algolia_api_key" class="regular-text" value="<?php echo esc_attr( $setting ); ?>" <?php echo esc_html( $disabled_html ); ?>/>
-		<p class="description" id="home-description"><?php esc_html_e( 'Your Algolia ADMIN API key (kept private).', 'wp-search-with-algolia' ); ?></p>
-<?php
+		$settings = Algolia_Settings_Factory::create();
+		?>
+		<input name="algolia_api_key"
+				class="regular-text"
+				type="password"
+				value="<?php echo esc_attr( $settings->get_api_key() ); ?>"
+				<?php disabled( $settings->is_api_key_in_config() ); ?> />
+		<p class="description" id="home-description">
+			<?php esc_html_e( 'Your Algolia ADMIN API key (kept private).', 'wp-search-with-algolia' ); ?>
+		</p>
+		<?php
 	}
 
 	/**
@@ -210,13 +220,17 @@ class Algolia_Admin_Page_Settings {
 	 * @since  1.0.0
 	 */
 	public function index_name_prefix_callback() {
-		$settings          = $this->plugin->get_settings();
-		$index_name_prefix = $settings->get_index_name_prefix();
-		$disabled_html     = $settings->is_index_name_prefix_in_config() ? ' disabled' : '';
-?>
-		<input type="text" name="algolia_index_name_prefix" value="<?php echo esc_attr( $index_name_prefix ); ?>" <?php echo esc_html( $disabled_html ); ?>/>
-		<p class="description" id="home-description"><?php esc_html_e( 'This prefix will be prepended to your index names.', 'wp-search-with-algolia' ); ?></p>
-<?php
+		$settings = Algolia_Settings_Factory::create();
+		?>
+		<input name="algolia_index_name_prefix"
+				class="small-text"
+				type="text"
+				value="<?php echo esc_attr( $settings->get_index_name_prefix() ); ?>"
+				<?php disabled( $settings->is_index_name_prefix_in_config() ); ?> />
+		<p class="description" id="home-description">
+			<?php esc_html_e( 'This prefix will be prepended to your index names.', 'wp-search-with-algolia' ); ?>
+		</p>
+		<?php
 	}
 
 	/**
@@ -226,13 +240,16 @@ class Algolia_Admin_Page_Settings {
 	 * @since  2020-07-24
 	 */
 	public function powered_by_enabled_callback() {
-		$powered_by_enabled = $this->plugin->get_settings()->is_powered_by_enabled();
-		$checked            = '';
-		if ( ! $powered_by_enabled ) {
-			$checked = ' checked';
-		}
-		echo "<input type='checkbox' name='algolia_powered_by_enabled' value='no' " . esc_html( $checked ) . ' />' .
-			'<p class="description" id="home-description">' . esc_html( __( 'This will remove the Algolia logo from the autocomplete and the search page. We require that you keep the Algolia logo if you are using a free plan.', 'wp-search-with-algolia' ) ) . '</p>';
+		$settings = Algolia_Settings_Factory::create();
+		?>
+		<input name="algolia_powered_by_enabled"
+				type="checkbox"
+				value="no"
+			<?php checked( ( ! $settings->is_powered_by_enabled() ) ); ?> />
+		<p class="description" id="home-description">
+			<?php esc_html_e( 'This will remove the Algolia logo from the autocomplete and the search page. We require that you keep the Algolia logo if you are using a free plan.', 'wp-search-with-algolia' ); ?>
+		</p>
+		<?php
 	}
 
 	/**
